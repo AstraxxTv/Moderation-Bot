@@ -26,7 +26,7 @@ module.exports = {
                     )
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
-                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
                 await logChannel.send({ embeds: [logEmbed] });
             }

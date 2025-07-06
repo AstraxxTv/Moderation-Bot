@@ -39,7 +39,7 @@ module.exports = {
                 { name: '🎭 Surnom', value: targetMember?.nickname || 'Aucun', inline: true }
             )
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
         // Ajouter les rôles si l'utilisateur est membre
         if (targetMember) {

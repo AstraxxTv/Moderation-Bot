@@ -14,7 +14,7 @@ class EmbedBuilder {
             .setDescription(description)
             .addFields(fields)
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
     }
 
     static error(title, description, fields = []) {
@@ -24,7 +24,7 @@ class EmbedBuilder {
             .setDescription(description)
             .addFields(fields)
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
     }
 
     static warning(title, description, fields = []) {
@@ -34,7 +34,7 @@ class EmbedBuilder {
             .setDescription(description)
             .addFields(fields)
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
     }
 
     static info(title, description, fields = []) {
@@ -44,7 +44,7 @@ class EmbedBuilder {
             .setDescription(description)
             .addFields(fields)
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
     }
 
     static log(action, user, moderator, reason = 'Aucune raison spécifiée', duration = null) {
@@ -58,7 +58,7 @@ class EmbedBuilder {
                 { name: 'Raison', value: reason, inline: false }
             )
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
         if (duration) {
             embed.addFields({ name: 'Durée', value: duration, inline: true });
@@ -74,7 +74,7 @@ class EmbedBuilder {
             .setDescription(`Bienvenue ${user} sur le serveur !\nTu es notre ${memberCount}ème membre !`)
             .setThumbnail(user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
     }
 
     static goodbye(user) {
@@ -84,7 +84,7 @@ class EmbedBuilder {
             .setDescription(`${user} a quitté le serveur.`)
             .setThumbnail(user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
     }
 }
 

@@ -30,7 +30,7 @@ module.exports = {
                         .setTitle('❌ Commande Non Trouvée')
                         .setDescription(`La commande \`${commandName}\` n'existe pas.`)
                         .setTimestamp()
-                        .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' })],
+                        .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' })],
                     ephemeral: true
                 });
             }
@@ -43,7 +43,7 @@ module.exports = {
                     { name: 'Cooldown', value: `${command.cooldown || 3} secondes`, inline: true }
                 )
                 .setTimestamp()
-                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
             await interaction.reply({ embeds: [commandEmbed] });
             return;
@@ -61,7 +61,7 @@ module.exports = {
             .setTitle('🤖 Bot de Modération - Aide')
             .setDescription('Voici la liste des commandes disponibles. Utilisez `/help <commande>` pour plus de détails.')
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
         for (const [category, commands] of Object.entries(categories)) {
             const commandList = commands

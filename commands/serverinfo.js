@@ -62,7 +62,7 @@ module.exports = {
                 { name: '📁 Catégories', value: categories.toString(), inline: true }
             )
             .setTimestamp()
-            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+            .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
         // Ajouter les informations de boost si disponibles
         if (guild.premiumTier > 0) {

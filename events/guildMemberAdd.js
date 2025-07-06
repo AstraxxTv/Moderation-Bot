@@ -25,7 +25,7 @@ module.exports = {
                     .setDescription(welcomeMessage)
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
-                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
                 await welcomeChannel.send({ embeds: [welcomeEmbed] });
             }
@@ -44,7 +44,7 @@ module.exports = {
                     .setDescription(dmMessage)
                     .setThumbnail(guild.iconURL({ dynamic: true }))
                     .setTimestamp()
-                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
                 await member.send({ embeds: [dmEmbed] });
             } catch (error) {
@@ -79,7 +79,7 @@ module.exports = {
                     )
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
-                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
                 await logChannel.send({ embeds: [logEmbed] });
             }
@@ -100,7 +100,7 @@ module.exports = {
                 )
                 .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                 .setTimestamp()
-                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
 
             // Envoyer l'alerte dans le canal de logs
             if (config.logChannelId) {

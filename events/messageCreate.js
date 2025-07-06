@@ -54,7 +54,7 @@ async function handleAutoMod(message) {
                 .setTitle('⚠️ Anti-Spam')
                 .setDescription(`${message.author}, vous envoyez trop de messages rapidement.`)
                 .setTimestamp()
-                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
             
             const warning = await message.channel.send({ embeds: [warningEmbed] });
             
@@ -79,7 +79,7 @@ async function handleAutoMod(message) {
                 .setTitle('⚠️ Anti-Caps')
                 .setDescription(`${message.author}, évitez d'écrire en majuscules.`)
                 .setTimestamp()
-                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
             
             const warning = await message.channel.send({ embeds: [warningEmbed] });
             
@@ -103,7 +103,7 @@ async function handleAutoMod(message) {
                     .setTitle('⚠️ Liens Interdits')
                     .setDescription(`${message.author}, vous n'avez pas la permission de poster des liens.`)
                     .setTimestamp()
-                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
                 
                 const warning = await message.channel.send({ embeds: [warningEmbed] });
                 
@@ -126,7 +126,7 @@ async function handleAutoMod(message) {
                 .setTitle('⚠️ Invitations Interdites')
                 .setDescription(`${message.author}, les invitations Discord ne sont pas autorisées.`)
                 .setTimestamp()
-                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
             
             const warning = await message.channel.send({ embeds: [warningEmbed] });
             
@@ -148,7 +148,7 @@ async function handleAutoMod(message) {
                     .setTitle('🚫 Mot Interdit')
                     .setDescription(`${message.author}, ce mot n'est pas autorisé sur ce serveur.`)
                     .setTimestamp()
-                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                    .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
                 
                 const warning = await message.channel.send({ embeds: [warningEmbed] });
                 
@@ -194,7 +194,7 @@ async function handleLeveling(message) {
                 .setTitle('🎉 Niveau Atteint !')
                 .setDescription(`${message.author} a gagné de l'expérience !`)
                 .setTimestamp()
-                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://cdn.discordapp.com/avatars/123456789/abcdef.png' });
+                .setFooter({ text: 'Développé par AstraxxTv', iconURL: 'https://minotar.net/helm/AstraxxTv/48.png' });
             
             await announceChannel.send({ embeds: [levelEmbed] });
         }
