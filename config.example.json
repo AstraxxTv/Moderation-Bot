@@ -1,0 +1,72 @@
+{
+  "token": "VOTRE_TOKEN_DISCORD_ICI",
+  "clientId": "VOTRE_CLIENT_ID_ICI",
+  "guildId": "VOTRE_GUILD_ID_ICI",
+  "prefix": "!",
+  "embedColor": "#0099ff",
+  "embedErrorColor": "#ff0000",
+  "embedSuccessColor": "#00ff00",
+  "embedWarningColor": "#ffff00",
+  "ownerId": "VOTRE_ID_UTILISATEUR_ICI",
+  "logChannelId": "ID_CANAL_LOGS_ICI",
+  "welcomeChannelId": "ID_CANAL_BIENVENUE_ICI",
+  "modRoleId": "ID_ROLE_MODERATEUR_ICI",
+  "adminRoleId": "ID_ROLE_ADMIN_ICI",
+  "mutedRoleId": "ID_ROLE_MUTE_ICI",
+  "autoRoleId": "ID_ROLE_AUTO_ICI",
+  "status": {
+    "enabled": true,
+    "type": "WATCHING",
+    "messages": [
+      "les membres du serveur",
+      "la modération",
+      "les commandes",
+      "la sécurité",
+      "les logs",
+      "les nouveaux membres"
+    ],
+    "interval": 30000
+  },
+  "welcome": {
+    "enabled": true,
+    "message": "Bienvenue {user} sur le serveur ! Tu es notre {memberCount}ème membre !",
+    "dmMessage": "Merci d'avoir rejoint notre serveur ! N'oublie pas de lire les règles."
+  },
+  "autoMod": {
+    "enabled": true,
+    "antiSpam": true,
+    "antiCaps": true,
+    "antiLink": false,
+    "antiInvite": true,
+    "wordFilter": true,
+    "bannedWords": [
+      "mot1",
+      "mot2",
+      "mot3"
+    ]
+  },
+  "levels": {
+    "enabled": true,
+    "xpPerMessage": 15,
+    "xpCooldown": 60000,
+    "announceChannelId": "ID_CANAL_ANNONCES_ICI"
+  },
+  "tickets": {
+    "enabled": true,
+    "categoryId": "ID_CATEGORIE_TICKETS_ICI",
+    "supportRoleId": "ID_ROLE_SUPPORT_ICI"
+  },
+  "logs": {
+    "enabled": true,
+    "messageDelete": true,
+    "messageEdit": true,
+    "memberJoin": true,
+    "memberLeave": true,
+    "memberBan": true,
+    "memberUnban": true,
+    "channelCreate": true,
+    "channelDelete": true,
+    "roleCreate": true,
+    "roleDelete": true
+  }
+} 

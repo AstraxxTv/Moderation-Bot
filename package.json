@@ -1,0 +1,34 @@
+{
+  "name": "moderation-bot",
+  "version": "1.0.0",
+  "description": "Bot Discord de modération avancé avec nombreuses fonctionnalités",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "moderation",
+    "javascript"
+  ],
+  "author": "AstraxxTv",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "moment": "^2.29.4",
+    "canvas": "^2.11.2",
+    "node-cron": "^3.0.3",
+    "axios": "^1.6.0",
+    "ms": "^2.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.9.0"
+  }
+} 
