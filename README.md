@@ -412,7 +412,7 @@ furnished to do so, subject to the following conditions...
 **AstraxxTv** - Développeur Principal
 
 [![GitHub](https://img.shields.io/badge/GitHub-AstraxxTv-black?style=for-the-badge&logo=github)](https://github.com/AstraxxTv)
-[![Discord](https://img.shields.io/badge/Discord-AstraxxTv-7289DA?style=for-the-badge&logo=discord)](https://discord.gg/votre-serveur)
+[![Discord](https://img.shields.io/badge/Discord-AstraxxTv-7289DA?style=for-the-badge&logo=discord)](https://discord.gg/Zm2ED9Fj3D)
 
 </div>
 
