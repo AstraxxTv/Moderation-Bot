@@ -4,7 +4,7 @@
  */
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const EmbedBuilder = require('../utils/embedBuilder');
+const CustomEmbedBuilder = require('../utils/embedBuilder');
 const PermissionChecker = require('../utils/permissions');
 const config = require('../config.json');
 
@@ -32,7 +32,7 @@ module.exports = {
         // Vérifications de permissions
         if (!PermissionChecker.canBan(moderator)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de débannir des utilisateurs.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de débannir des utilisateurs.')],
                 ephemeral: true
             });
         }
@@ -40,7 +40,7 @@ module.exports = {
         // Vérifier si l'ID est valide
         if (!/^\d{17,19}$/.test(userId)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('ID Invalide', 'L\'ID utilisateur fourni n\'est pas valide.')],
+                embeds: [CustomEmbedBuilder.error('ID Invalide', 'L\'ID utilisateur fourni n\'est pas valide.')],
                 ephemeral: true
             });
         }
@@ -52,7 +52,7 @@ module.exports = {
 
             if (!ban) {
                 return interaction.reply({
-                    embeds: [EmbedBuilder.error('Utilisateur Non Banni', 'Cet utilisateur n\'est pas banni de ce serveur.')],
+                    embeds: [CustomEmbedBuilder.error('Utilisateur Non Banni', 'Cet utilisateur n\'est pas banni de ce serveur.')],
                     ephemeral: true
                 });
             }
@@ -64,7 +64,7 @@ module.exports = {
             const user = ban.user;
 
             // Créer l'embed de confirmation
-            const unbanEmbed = EmbedBuilder.success(
+            const unbanEmbed = CustomEmbedBuilder.success(
                 'Utilisateur Débanni',
                 `${user.tag} a été débanni du serveur.`,
                 [
@@ -80,7 +80,7 @@ module.exports = {
             if (config.logs.enabled && config.logChannelId) {
                 const logChannel = interaction.guild.channels.cache.get(config.logChannelId);
                 if (logChannel) {
-                    const logEmbed = EmbedBuilder.log('Débannissement', user, moderator.user, reason);
+                    const logEmbed = CustomEmbedBuilder.log('Débannissement', user, moderator.user, reason);
                     await logChannel.send({ embeds: [logEmbed] });
                 }
             }
@@ -88,7 +88,7 @@ module.exports = {
         } catch (error) {
             console.error('Erreur lors du débannissement:', error);
             await interaction.reply({
-                embeds: [EmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors du débannissement.')],
+                embeds: [CustomEmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors du débannissement.')],
                 ephemeral: true
             });
         }

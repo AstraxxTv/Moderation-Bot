@@ -6,7 +6,7 @@
 const { EmbedBuilder } = require('discord.js');
 const config = require('../config.json');
 
-class EmbedBuilder {
+class CustomEmbedBuilder {
     static success(title, description, fields = []) {
         return new EmbedBuilder()
             .setColor(config.embedSuccessColor)
@@ -88,4 +88,4 @@ class EmbedBuilder {
     }
 }
 
-module.exports = EmbedBuilder; 
+module.exports = CustomEmbedBuilder; 

@@ -4,7 +4,7 @@
  */
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const EmbedBuilder = require('../utils/embedBuilder');
+const CustomEmbedBuilder = require('../utils/embedBuilder');
 const PermissionChecker = require('../utils/permissions');
 const config = require('../config.json');
 
@@ -39,7 +39,7 @@ module.exports = {
         // Vérifications de permissions
         if (!PermissionChecker.canBan(moderator)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de bannir des utilisateurs.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de bannir des utilisateurs.')],
                 ephemeral: true
             });
         }
@@ -48,7 +48,7 @@ module.exports = {
 
         if (!targetMember) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Erreur', 'Impossible de trouver cet utilisateur sur le serveur.')],
+                embeds: [CustomEmbedBuilder.error('Erreur', 'Impossible de trouver cet utilisateur sur le serveur.')],
                 ephemeral: true
             });
         }
@@ -56,7 +56,7 @@ module.exports = {
         // Vérifier si l'utilisateur peut être banni
         if (!targetMember.bannable) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Impossible de Bannir', 'Je ne peux pas bannir cet utilisateur. Il a peut-être des permissions plus élevées que moi.')],
+                embeds: [CustomEmbedBuilder.error('Impossible de Bannir', 'Je ne peux pas bannir cet utilisateur. Il a peut-être des permissions plus élevées que moi.')],
                 ephemeral: true
             });
         }
@@ -64,7 +64,7 @@ module.exports = {
         // Vérifier la hiérarchie des rôles
         if (!PermissionChecker.isHigherRole(moderator, targetMember)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous ne pouvez pas bannir quelqu\'un qui a un rôle plus élevé que vous.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous ne pouvez pas bannir quelqu\'un qui a un rôle plus élevé que vous.')],
                 ephemeral: true
             });
         }
@@ -72,7 +72,7 @@ module.exports = {
         // Vérifier si l'utilisateur est le propriétaire
         if (targetMember.id === interaction.guild.ownerId) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Impossible de Bannir', 'Vous ne pouvez pas bannir le propriétaire du serveur.')],
+                embeds: [CustomEmbedBuilder.error('Impossible de Bannir', 'Vous ne pouvez pas bannir le propriétaire du serveur.')],
                 ephemeral: true
             });
         }
@@ -85,7 +85,7 @@ module.exports = {
             });
 
             // Créer l'embed de confirmation
-            const banEmbed = EmbedBuilder.success(
+            const banEmbed = CustomEmbedBuilder.success(
                 'Utilisateur Banni',
                 `${user.tag} a été banni du serveur.`,
                 [
@@ -100,7 +100,7 @@ module.exports = {
 
             // Envoyer un message privé à l'utilisateur banni
             try {
-                const dmEmbed = EmbedBuilder.warning(
+                const dmEmbed = CustomEmbedBuilder.warning(
                     'Vous avez été banni',
                     `Vous avez été banni du serveur **${interaction.guild.name}**`,
                     [
@@ -118,7 +118,7 @@ module.exports = {
             if (config.logs.enabled && config.logChannelId) {
                 const logChannel = interaction.guild.channels.cache.get(config.logChannelId);
                 if (logChannel) {
-                    const logEmbed = EmbedBuilder.log('Bannissement', user, moderator.user, reason);
+                    const logEmbed = CustomEmbedBuilder.log('Bannissement', user, moderator.user, reason);
                     await logChannel.send({ embeds: [logEmbed] });
                 }
             }
@@ -126,7 +126,7 @@ module.exports = {
         } catch (error) {
             console.error('Erreur lors du bannissement:', error);
             await interaction.reply({
-                embeds: [EmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors du bannissement.')],
+                embeds: [CustomEmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors du bannissement.')],
                 ephemeral: true
             });
         }

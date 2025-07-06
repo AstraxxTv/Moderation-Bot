@@ -4,7 +4,7 @@
  */
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const EmbedBuilder = require('../utils/embedBuilder');
+const CustomEmbedBuilder = require('../utils/embedBuilder');
 const PermissionChecker = require('../utils/permissions');
 const config = require('../config.json');
 
@@ -32,7 +32,7 @@ module.exports = {
         // Vérifications de permissions
         if (!PermissionChecker.canKick(moderator)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission d\'expulser des utilisateurs.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission d\'expulser des utilisateurs.')],
                 ephemeral: true
             });
         }
@@ -41,7 +41,7 @@ module.exports = {
 
         if (!targetMember) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Erreur', 'Impossible de trouver cet utilisateur sur le serveur.')],
+                embeds: [CustomEmbedBuilder.error('Erreur', 'Impossible de trouver cet utilisateur sur le serveur.')],
                 ephemeral: true
             });
         }
@@ -49,7 +49,7 @@ module.exports = {
         // Vérifier si l'utilisateur peut être expulsé
         if (!targetMember.kickable) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Impossible d\'Expulser', 'Je ne peux pas expulser cet utilisateur. Il a peut-être des permissions plus élevées que moi.')],
+                embeds: [CustomEmbedBuilder.error('Impossible d\'Expulser', 'Je ne peux pas expulser cet utilisateur. Il a peut-être des permissions plus élevées que moi.')],
                 ephemeral: true
             });
         }
@@ -57,7 +57,7 @@ module.exports = {
         // Vérifier la hiérarchie des rôles
         if (!PermissionChecker.isHigherRole(moderator, targetMember)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous ne pouvez pas expulser quelqu\'un qui a un rôle plus élevé que vous.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous ne pouvez pas expulser quelqu\'un qui a un rôle plus élevé que vous.')],
                 ephemeral: true
             });
         }
@@ -65,7 +65,7 @@ module.exports = {
         // Vérifier si l'utilisateur est le propriétaire
         if (targetMember.id === interaction.guild.ownerId) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Impossible d\'Expulser', 'Vous ne pouvez pas expulser le propriétaire du serveur.')],
+                embeds: [CustomEmbedBuilder.error('Impossible d\'Expulser', 'Vous ne pouvez pas expulser le propriétaire du serveur.')],
                 ephemeral: true
             });
         }
@@ -75,7 +75,7 @@ module.exports = {
             await targetMember.kick(`${reason} | Expulsé par ${moderator.user.tag}`);
 
             // Créer l'embed de confirmation
-            const kickEmbed = EmbedBuilder.success(
+            const kickEmbed = CustomEmbedBuilder.success(
                 'Utilisateur Expulsé',
                 `${user.tag} a été expulsé du serveur.`,
                 [
@@ -89,7 +89,7 @@ module.exports = {
 
             // Envoyer un message privé à l'utilisateur expulsé
             try {
-                const dmEmbed = EmbedBuilder.warning(
+                const dmEmbed = CustomEmbedBuilder.warning(
                     'Vous avez été expulsé',
                     `Vous avez été expulsé du serveur **${interaction.guild.name}**`,
                     [
@@ -107,7 +107,7 @@ module.exports = {
             if (config.logs.enabled && config.logChannelId) {
                 const logChannel = interaction.guild.channels.cache.get(config.logChannelId);
                 if (logChannel) {
-                    const logEmbed = EmbedBuilder.log('Expulsion', user, moderator.user, reason);
+                    const logEmbed = CustomEmbedBuilder.log('Expulsion', user, moderator.user, reason);
                     await logChannel.send({ embeds: [logEmbed] });
                 }
             }
@@ -115,7 +115,7 @@ module.exports = {
         } catch (error) {
             console.error('Erreur lors de l\'expulsion:', error);
             await interaction.reply({
-                embeds: [EmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors de l\'expulsion.')],
+                embeds: [CustomEmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors de l\'expulsion.')],
                 ephemeral: true
             });
         }

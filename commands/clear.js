@@ -4,7 +4,7 @@
  */
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const EmbedBuilder = require('../utils/embedBuilder');
+const CustomEmbedBuilder = require('../utils/embedBuilder');
 const PermissionChecker = require('../utils/permissions');
 
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
         // Vérifications de permissions
         if (!PermissionChecker.canManageMessages(moderator)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de supprimer des messages.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de supprimer des messages.')],
                 ephemeral: true
             });
         }
@@ -54,7 +54,7 @@ module.exports = {
 
             if (messagesToDeleteArray.length === 0) {
                 return interaction.reply({
-                    embeds: [EmbedBuilder.warning('Aucun Message', 'Aucun message à supprimer trouvé.')],
+                    embeds: [CustomEmbedBuilder.warning('Aucun Message', 'Aucun message à supprimer trouvé.')],
                     ephemeral: true
                 });
             }
@@ -63,7 +63,7 @@ module.exports = {
             const deletedMessages = await interaction.channel.bulkDelete(messagesToDeleteArray, true);
 
             // Créer l'embed de confirmation
-            const clearEmbed = EmbedBuilder.success(
+            const clearEmbed = CustomEmbedBuilder.success(
                 'Messages Supprimés',
                 `${deletedMessages.size} message(s) ont été supprimés.`,
                 [
@@ -92,12 +92,12 @@ module.exports = {
             
             if (error.code === 50034) {
                 await interaction.reply({
-                    embeds: [EmbedBuilder.error('Erreur', 'Impossible de supprimer des messages de plus de 14 jours.')],
+                    embeds: [CustomEmbedBuilder.error('Erreur', 'Impossible de supprimer des messages de plus de 14 jours.')],
                     ephemeral: true
                 });
             } else {
                 await interaction.reply({
-                    embeds: [EmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors de la suppression des messages.')],
+                    embeds: [CustomEmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors de la suppression des messages.')],
                     ephemeral: true
                 });
             }

@@ -4,7 +4,7 @@
  */
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const EmbedBuilder = require('../utils/embedBuilder');
+const CustomEmbedBuilder = require('../utils/embedBuilder');
 const PermissionChecker = require('../utils/permissions');
 const config = require('../config.json');
 
@@ -37,7 +37,7 @@ module.exports = {
         // Vérifications de permissions
         if (!PermissionChecker.canManageRoles(moderator)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de muter des utilisateurs.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous n\'avez pas la permission de muter des utilisateurs.')],
                 ephemeral: true
             });
         }
@@ -46,7 +46,7 @@ module.exports = {
 
         if (!targetMember) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Erreur', 'Impossible de trouver cet utilisateur sur le serveur.')],
+                embeds: [CustomEmbedBuilder.error('Erreur', 'Impossible de trouver cet utilisateur sur le serveur.')],
                 ephemeral: true
             });
         }
@@ -54,7 +54,7 @@ module.exports = {
         // Vérifier si l'utilisateur peut être muté
         if (!targetMember.moderatable) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Impossible de Muter', 'Je ne peux pas muter cet utilisateur. Il a peut-être des permissions plus élevées que moi.')],
+                embeds: [CustomEmbedBuilder.error('Impossible de Muter', 'Je ne peux pas muter cet utilisateur. Il a peut-être des permissions plus élevées que moi.')],
                 ephemeral: true
             });
         }
@@ -62,7 +62,7 @@ module.exports = {
         // Vérifier la hiérarchie des rôles
         if (!PermissionChecker.isHigherRole(moderator, targetMember)) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Permission Refusée', 'Vous ne pouvez pas muter quelqu\'un qui a un rôle plus élevé que vous.')],
+                embeds: [CustomEmbedBuilder.error('Permission Refusée', 'Vous ne pouvez pas muter quelqu\'un qui a un rôle plus élevé que vous.')],
                 ephemeral: true
             });
         }
@@ -70,7 +70,7 @@ module.exports = {
         // Vérifier si l'utilisateur est le propriétaire
         if (targetMember.id === interaction.guild.ownerId) {
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Impossible de Muter', 'Vous ne pouvez pas muter le propriétaire du serveur.')],
+                embeds: [CustomEmbedBuilder.error('Impossible de Muter', 'Vous ne pouvez pas muter le propriétaire du serveur.')],
                 ephemeral: true
             });
         }
@@ -81,7 +81,7 @@ module.exports = {
 
         if (!durationMs || durationMs < 60000 || durationMs > 2419200000) { // Entre 1 minute et 28 jours
             return interaction.reply({
-                embeds: [EmbedBuilder.error('Durée Invalide', 'La durée doit être entre 1 minute et 28 jours (ex: 1h, 30m, 1d).')],
+                embeds: [CustomEmbedBuilder.error('Durée Invalide', 'La durée doit être entre 1 minute et 28 jours (ex: 1h, 30m, 1d).')],
                 ephemeral: true
             });
         }
@@ -91,7 +91,7 @@ module.exports = {
             await targetMember.timeout(durationMs, `${reason} | Muté par ${moderator.user.tag}`);
 
             // Créer l'embed de confirmation
-            const muteEmbed = EmbedBuilder.success(
+            const muteEmbed = CustomEmbedBuilder.success(
                 'Utilisateur Muté',
                 `${user.tag} a été muté.`,
                 [
@@ -106,7 +106,7 @@ module.exports = {
 
             // Envoyer un message privé à l'utilisateur muté
             try {
-                const dmEmbed = EmbedBuilder.warning(
+                const dmEmbed = CustomEmbedBuilder.warning(
                     'Vous avez été muté',
                     `Vous avez été muté sur le serveur **${interaction.guild.name}**`,
                     [
@@ -125,7 +125,7 @@ module.exports = {
             if (config.logs.enabled && config.logChannelId) {
                 const logChannel = interaction.guild.channels.cache.get(config.logChannelId);
                 if (logChannel) {
-                    const logEmbed = EmbedBuilder.log('Mute', user, moderator.user, reason, duration);
+                    const logEmbed = CustomEmbedBuilder.log('Mute', user, moderator.user, reason, duration);
                     await logChannel.send({ embeds: [logEmbed] });
                 }
             }
@@ -137,7 +137,7 @@ module.exports = {
                     if (member.isCommunicationDisabled()) {
                         await member.timeout(null, 'Mute expiré automatiquement');
                         
-                        const unmuteEmbed = EmbedBuilder.info(
+                        const unmuteEmbed = CustomEmbedBuilder.info(
                             'Mute Expiré',
                             `${user.tag} a été automatiquement démuté.`,
                             [
@@ -150,7 +150,7 @@ module.exports = {
                         if (config.logs.enabled && config.logChannelId) {
                             const logChannel = interaction.guild.channels.cache.get(config.logChannelId);
                             if (logChannel) {
-                                const logEmbed = EmbedBuilder.log('Démute Automatique', user, client.user, 'Mute expiré', duration);
+                                const logEmbed = CustomEmbedBuilder.log('Démute Automatique', user, client.user, 'Mute expiré', duration);
                                 await logChannel.send({ embeds: [logEmbed] });
                             }
                         }
@@ -163,7 +163,7 @@ module.exports = {
         } catch (error) {
             console.error('Erreur lors du mute:', error);
             await interaction.reply({
-                embeds: [EmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors du mute.')],
+                embeds: [CustomEmbedBuilder.error('Erreur', 'Une erreur s\'est produite lors du mute.')],
                 ephemeral: true
             });
         }
